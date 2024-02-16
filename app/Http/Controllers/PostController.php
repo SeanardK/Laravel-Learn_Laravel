@@ -86,7 +86,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        Storage::delete('public/posts/'. $post->image);
+        Storage::delete('public/posts/' . $post->image);
 
         $post->delete();
         
