@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,12 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name("home");
+
+// Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get("/auth/login", [AuthController::class, "login"]);
+Route::get("/auth/register", [AuthController::class, "register"]);
+
+Route::post("actionLogin", [AuthController::class, "actionLogin"])->name("actionLogin");
 
 Route::resource("/posts", PostController::class);
